@@ -1,0 +1,2 @@
+﻿test.obj : error LNK2005: WinMain は既に Main.obj で定義されています。
+C:\Users\81907\OneDrive\デスクトップ\ScendProject\GameProg\x64\Debug\GameProg.exe : fatal error LNK1169: 1 つ以上の複数回定義されているシンボルが見つかりました。
