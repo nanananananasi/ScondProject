@@ -1,4 +1,4 @@
-#include "DxLib.h"
+/*#include "DxLib.h"
 
 typedef struct {
     int x, y, img, muki, walking_flag;
@@ -50,6 +50,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     if (ChangeWindowMode(TRUE) != DX_CHANGESCREEN_OK || DxLib_Init() == -1) return -1; //ウィンドウ化と初期化処理
 
     int Handle = LoadGraph("画像/キャラクタ01.png"); // 画像のロード
+    int Handle3 = LoadGraph("画像/Q1.png");
     ch.x = 288;
     ch.y = 416;
     ch.walking_flag = 0;
@@ -64,7 +65,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         //↑ﾒｯｾｰｼﾞ処理        ↑画面をｸﾘｱ         ↑ｷｰﾎﾞｰﾄﾞ入力状態取得       ↑ESCが押されると終了
 
             /*白い壁を描画*/
-        for (i = 0; i < 15; i++)
+       /* for (i = 0; i < 15; i++)
             for (j = 0; j < 20; j++)
                 if (hantei[i][j] == 1)
                     DrawBox(j * 32, i * 32, (j + 1) * 32, (i + 1) * 32, GetColor(255, 255, 255), TRUE);
@@ -98,7 +99,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         }
         if (Key[KEY_INPUT_Q] == 1) {//Q1
             if (ch.x == 32 && ch.y == 256 && ch.muki == 0) {
-                DrawGraph(0, 0, Handle, true);
+                DrawGraph(0, 0, Handle3, true);
             }
         }
         if (Key[KEY_INPUT_Q] == 1) {//A1
@@ -144,9 +145,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         }*/
             //}
         //}*/
-        ScreenFlip();
+       /* ScreenFlip();
     }
 
     DxLib_End();
     return 0;
-}
+}*/
