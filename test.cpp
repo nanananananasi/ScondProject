@@ -70,6 +70,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     int KeyHandle1 = LoadGraph("画像/Key1.tiff"); // 画像のロード
     int KeyHandle2 = LoadGraph("画像/Key2.tiff"); // 画像のロード
     int KeyHandle3 = LoadGraph("画像/Key3.tiff"); // 画像のロード
+    int KeyHandle4 = LoadGraph("画像/Key4.tiff"); // 画像のロード
     int ItemHandle1 = LoadGraph("画像/ItemKey1.tiff"); // 画像のロード
     int ItemHandle2 = LoadGraph("画像/ItemKey2.tiff"); // 画像のロード
     int ItemHandle3 = LoadGraph("画像/ItemKey3.tiff"); // 画像のロード
@@ -352,15 +353,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                       }
                 }
             }
+         
 
             if (keyhandle1 == 1) {
                 DrawGraph(125, 5, KeyHandle1, true);//アイテム鍵1
             }
             if (keyhandle2 == 1) {
-                DrawGraph(185, 5, KeyHandle2, true);//アイテム鍵1
+                DrawGraph(185, 5, KeyHandle2, true);//アイテム鍵2
             }
             if (keyhandle3 == 1) {
-                DrawGraph(245, 5, KeyHandle3, true);//アイテム鍵1
+                DrawGraph(245, 5, KeyHandle3, true);//アイテム鍵3
+            }
+            if (keyhandle1 == true&& keyhandle2 == true&& keyhandle3 == true) {
+                DrawGraph(305, 5, KeyHandle4, true);//アイテム鍵4
             }
             ch.img = image[(ch.x % 32 + ch.y % 32) / 8 + ch.muki * 4];            //画像をセット
             DrawFormatString(0, 0, (255, 255, 255), " % d", ch.x);
