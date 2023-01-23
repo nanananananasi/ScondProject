@@ -73,6 +73,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     int ItemHandle1 = LoadGraph("画像/ItemKey1.tiff"); // 画像のロード
     int ItemHandle2 = LoadGraph("画像/ItemKey2.tiff"); // 画像のロード
     int ItemHandle3 = LoadGraph("画像/ItemKey3.tiff"); // 画像のロード
+    int GameClear = LoadGraph("画像/GameClear.tiff"); // 画像のロード
     ch.x = 288;
     ch.y = 416;
     ch.walking_flag = 0;
@@ -81,9 +82,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     bool  keyhandle2 = false;
     bool  keyhandle3 = false;
     bool itemhandle1 = true;
-    bool itemhandle2 = false;
-    bool itemhandle3 = false;
-    int  keyhandle0  = 0;
+    bool itemhandle2 = true;
+    bool itemhandle3 = true;
+    int  changetexthandle1  = 0;
+    int  changetexthandle2 = 0;
+    int  changetexthandle3 = 0;
 
     bool TextDisplay = false;
     bool MapDisplay = false;
@@ -115,6 +118,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                 Sceen = 1;
                 }
         }
+        if (ch.x == 576 && ch.y == 224 && Key[KEY_INPUT_RETURN] == 1) {
+            Sceen = 2;
+        }
+    if (Sceen == 2) {
+        DrawString(140, 220, "遊んでくれてありがとう!!", GetColor(255, 255, 255));
+        DrawString(140, 240, "ESCキーを押したらゲームを終了できるよ", GetColor(255, 255, 255));
+    }
 
         if (Sceen == 1) {
             /*白い壁を描画*/
@@ -223,6 +233,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                     DrawGraph(0, 0, Handle4, true);
                 }
             }
+            if (TextDisplay) {//Quest4
+                if (ch.x == 448 && ch.y == 64 && ch.muki == 0) {
+                    DrawGraph(0, 0, GameClear, true);
+                }
+            }
 
 
             //ヒント
@@ -260,10 +275,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
             if (TextDisplay) {//item1
                 if (ch.x == 96 && ch.y == 352 && ch.muki == 2) {
-                    if (Keyboard_Get(KEY_INPUT_Q) == 1 && keyhandle0 == 0) {
-                        keyhandle0 = 1;
+                    if (Keyboard_Get(KEY_INPUT_Q) == 1 && changetexthandle1 == 0) {
+                        changetexthandle1 = 1;
                     }
-                    else if (keyhandle0 == 1) {
+                    else if (changetexthandle1 == 1) {
                         DrawGraph(50, 350, ItemHandle1, true);
                         DrawBox(150, 350, 450, 450, (255, 255, 255), true);
                         DrawFormatString(170, 355, (0, 0, 0), "アイテム入手!!", i);
@@ -274,11 +289,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                         itemhandle1 = false;
                         //keyhandle0 = false;
                         if (Keyboard_Get(KEY_INPUT_Q) == 1) {
-                            keyhandle0 = 2;
+                            changetexthandle1 = 2;
                         }
             
                     }
-                    else if (keyhandle0 == 2) {
+                    else if (changetexthandle1 == 2) {
                             DrawBox(150, 350, 450, 450, (255, 255, 255), true);
                             DrawFormatString(170, 355, (0, 0, 0), "何もないようだ", i);
                         
@@ -290,17 +305,35 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
             if (TextDisplay) {//item2
                 if (ch.x == 64 && ch.y == 64 && ch.muki == 2) {
-                    DrawGraph(50, 350, ItemHandle2, true);
-                    DrawBox(150, 350, 450, 450, (255, 255, 255), true);
-                    DrawFormatString(170, 355, (0, 0, 0), "アイテム入手!!", i);
-                    DrawFormatString(170, 390, (0, 0, 0), "右下の部屋のヒントを見つけた!", i);
-                    DrawFormatString(170, 420, (0, 0, 0), "おや、地図に変化が...", i);
+                    if (Keyboard_Get(KEY_INPUT_Q) == 1 && changetexthandle2 == 0) {
+                        changetexthandle2 = 1;
+                    }
+                    else if (changetexthandle2 == 1) {
+                        DrawGraph(50, 350, ItemHandle2, true);
+                        DrawBox(150, 350, 450, 450, (255, 255, 255), true);
+                        DrawFormatString(170, 355, (0, 0, 0), "アイテム入手!!", i);
+                        DrawFormatString(170, 390, (0, 0, 0), "右下の部屋のヒントを見つけた!", i);
+                        DrawFormatString(170, 420, (0, 0, 0), "おや、地図に変化が...", i);
 
-                    keyhandle2 = true;
+                        keyhandle2 = true;
+                        itemhandle2 = false;
+
+                        if (Keyboard_Get(KEY_INPUT_Q) == 1) {
+                            changetexthandle2 = 2;
+                        }
+                    }
+                    else if (changetexthandle2 == 2) {
+                        DrawBox(150, 350, 450, 450, (255, 255, 255), true);
+                        DrawFormatString(170, 355, (0, 0, 0), "何もないようだ", i);
+                    }
                 }
             }
             if (TextDisplay) {//item4
                 if (ch.x == 512 && ch.y == 352 && ch.muki == 0) {
+                      if (Keyboard_Get(KEY_INPUT_Q) == 1 && changetexthandle3 == 0) {
+                        changetexthandle3 = 1;
+                    }
+                    else if (changetexthandle3 == 1) {
                     DrawGraph(50, 350, ItemHandle3, true);
                     DrawBox(150, 350, 450, 450, (255, 255, 255), true);
                     DrawFormatString(170, 355, (0, 0, 0), "アイテム入手!!", i);
@@ -308,9 +341,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                     DrawFormatString(170, 420, (0, 0, 0), "おや、地図に変化が...", i);
 
                     keyhandle3 = true;
+                    itemhandle3 = false;
+                    if (Keyboard_Get(KEY_INPUT_Q) == 1) {
+                        changetexthandle3 = 2;
                 }
-
             }
+                    else if (changetexthandle3 == 2) {
+                          DrawBox(150, 350, 450, 450, (255, 255, 255), true);
+                          DrawFormatString(170, 355, (0, 0, 0), "何もないようだ", i);
+                      }
+                }
+            }
+
             if (keyhandle1 == 1) {
                 DrawGraph(125, 5, KeyHandle1, true);//アイテム鍵1
             }
