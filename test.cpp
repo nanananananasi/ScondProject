@@ -52,6 +52,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 
     LoadDivGraph("画像/キャラクタ10.png", 16, 4, 4, 32, 32, image);//画像を分割してimage配列に保存
+    int GameStart = LoadGraph("画像/GameStart1.tiff");
+    int GameClear2 = LoadGraph("画像/StageClear.tiff");
     int Handle1 = LoadGraph("画像/Q1.tiff"); // 画像のロード
     int Handle2 = LoadGraph("画像/Q2.tiff");
     int Handle3 = LoadGraph("画像/Q3.tiff");
@@ -105,27 +107,32 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         Keyboard_Update();
 
         if (Sceen == 0){
+            DrawGraph(0, 0, GameStart, true);
             DrawString(240, 100, "WhiteHouse", GetColor(255, 255, 255));
-            DrawString(140, 200, "操作方法", GetColor(255, 255, 255));
-            DrawString(140, 220, "移動は", GetColor(255, 255, 255));
-            DrawString(140, 240, "Wで前　　　Sで後", GetColor(255, 255, 255));
-            DrawString(140, 260, "Aで左　　　Dで右", GetColor(255, 255, 255));
-            DrawString(140, 280, "Qで問題を見たり、アイテムを取得したり", GetColor(255, 255, 255));
-            DrawString(140, 300, "マップを見ることができます。", GetColor(255, 255, 255));
-            DrawString(140, 320, "ゲームがスタートしたら最初にQで", GetColor(255, 255, 255));
-            DrawString(140, 340, "マップを見ることをおすすめするよ", GetColor(255, 255, 255));
-            DrawString(140, 360, "Gキーでゲームスタート", GetColor(255, 255, 255));
+            DrawString(140, 170, "操作方法", GetColor(255, 255, 255));
+            DrawString(140, 190, "移動は", GetColor(255, 255, 255));
+            DrawString(140, 210, "Wで前　　　Sで後", GetColor(255, 255, 255));
+            DrawString(140, 230, "Aで左　　　Dで右", GetColor(255, 255, 255));
+            DrawString(140, 250, "Qで問題を見たり、アイテムを取得したり", GetColor(255, 255, 255));
+            DrawString(140, 270, "マップを見ることができます。", GetColor(255, 255, 255));
+            DrawString(140, 290, "ゲームがスタートしたら最初にQで", GetColor(255, 255, 255));
+            DrawString(140, 310, "マップを見ることをおすすめします", GetColor(255, 255, 255));
+            DrawString(140, 330, "鍵が3種類ありすべて集めるとゲームを", GetColor(255, 255, 255));
+            DrawString(140, 350, "ゲームをクリアすることができます", GetColor(255, 255, 255));
+            DrawString(140, 370, "Gキーでゲームスタート", GetColor(255, 255, 255));
             if (Key[KEY_INPUT_G] == 1) {//Map2
                 Sceen = 1;
                 }
         }
-        if (ch.x == 576 && ch.y == 224 && Key[KEY_INPUT_RETURN] == 1) {
+        if (ch.x == 576 && ch.y == 224 && Key[KEY_INPUT_RETURN] == 1 && keyhandle1 == true && keyhandle2 == true && keyhandle3 == true) {
             Sceen = 2;
         }
     if (Sceen == 2) {
-        DrawString(140, 220, "遊んでくれてありがとう!!", GetColor(255, 255, 255));
-        DrawString(140, 240, "ESCキーを押したらゲームを終了できるよ", GetColor(255, 255, 255));
+        DrawGraph(0, 0, GameClear2, true);
+        DrawString(140, 320, "遊んでくれてありがとう!!", GetColor(0, 0, 0));
+        DrawString(140, 340, "ESCキーを押したらゲームを終了できるよ", GetColor(0, 0, 0));
     }
+  
 
         if (Sceen == 1) {
             /*白い壁を描画*/
@@ -368,8 +375,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                 DrawGraph(305, 5, KeyHandle4, true);//アイテム鍵4
             }
             ch.img = image[(ch.x % 32 + ch.y % 32) / 8 + ch.muki * 4];            //画像をセット
-            DrawFormatString(0, 0, (255, 255, 255), " % d", ch.x);
-            DrawFormatString(0, 20, (255, 255, 255), " % d", ch.y);
+   
             for (int i = 0; i < 9; i++) {
                 if (i++) {
                     DrawBox(30 + i * 30, 0, 90 + i * 30, 60, GetColor(0, 0, 0), false);
@@ -383,22 +389,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             DrawRotaGraph(400, 300, 1.0, 0, Image[98], TRUE); //画像の描画
 
         }
-
-             //DrawGraph(125, 5, KeyHandle1, true);//アイテム鍵1
-             //DrawGraph(185, 5, KeyHandle2, true);//アイテム鍵2
-             //DrawGraph(245, 5, KeyHandle3, true);//アイテム鍵3
-            
-             //DrawGraph(0, 0, Handle, true);
-             /*for (int m = 0; m < 15; m++) {//マップチップ
-                 for (int n = 0; n < 21; n++) {*/
-                 /* if (hantei[MapY][MapX] == 0) {
-                 DrawRotaGraph(32 + 16, 32 + 16, 1.0, 0, Image[64], TRUE); //画像の描画
-             }
-             else if (hantei[MapY][MapX] == 1) {
-                 DrawRotaGraph(16 + 32, 16 + 32, 1.0, 0, Image[98], TRUE); //画像の描画
-             }*/
-             //}
-         //}*/
+       
             ScreenFlip();
          }
 
