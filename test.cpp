@@ -109,10 +109,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         if (Sceen == 0){
             DrawGraph(0, 0, GameStart, true);
             DrawString(240, 80, "WhiteHouse", GetColor(255, 255, 255));
-            DrawString(140, 120, "ある日主人公は森深くにある館に興味本位で入ってしまう", GetColor(255, 255, 255));
+            DrawString(140, 120, "ある日主人公は森深くにある館に興味本位で入ってしまう。", GetColor(255, 255, 255));
             DrawString(140, 140, "入ると同時に玄関の鍵がかかってしまい", GetColor(255, 255, 255));
-            DrawString(140, 160, "閉じ込められてしまった", GetColor(255, 255, 255));
-            DrawString(140, 180, "すべてのカギを集めて館から脱出しよう", GetColor(255, 255, 255));
+            DrawString(140, 160, "閉じ込められてしまった。", GetColor(255, 255, 255));
+            DrawString(140, 180, "すべてのカギを集めて館から脱出しよう。", GetColor(255, 255, 255));
             DrawString(140, 220, "操作方法", GetColor(255, 255, 255));
             DrawString(140, 240, "移動は", GetColor(255, 255, 255));
             DrawString(140, 260, "Wで前　　　Sで後", GetColor(255, 255, 255));
@@ -120,9 +120,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             DrawString(140, 300, "Qで問題を見たり、アイテムを取得したり", GetColor(255, 255, 255));
             DrawString(140, 320, "マップを見ることができます。", GetColor(255, 255, 255));
             DrawString(140, 340, "ゲームがスタートしたら最初にQで", GetColor(255, 255, 255));
-            DrawString(140, 360, "マップを見ることをおすすめします", GetColor(255, 255, 255));
+            DrawString(140, 360, "マップを見ることをおすすめします。", GetColor(255, 255, 255));
             DrawString(140, 380, "鍵が3種類ありすべて集めるとゲームを", GetColor(255, 255, 255));
-            DrawString(140, 400, "ゲームをクリアすることができます", GetColor(255, 255, 255));
+            DrawString(140, 400, "ゲームをクリアすることができます。", GetColor(255, 255, 255));
             DrawString(140, 420, "Gキーでゲームスタート", GetColor(255, 255, 255));
             if (Key[KEY_INPUT_G] == 1) {//Map2
                 Sceen = 1;
@@ -133,8 +133,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         }
     if (Sceen == 2) {
         DrawGraph(0, 0, GameClear2, true);
-        DrawString(140, 320, "遊んでくれてありがとう!!", GetColor(0, 0, 0));
-        DrawString(140, 340, "ESCキーを押したらゲームを終了できるよ", GetColor(0, 0, 0));
+        DrawString(140, 280, "主人公は無事、館から脱出できた。", GetColor(0, 0, 0));
+        DrawString(140, 300, "しかし、外はすでに太陽が昇っており,明るかった。", GetColor(0, 0, 0));
+        DrawString(140, 320, "それほど長い時間、館にいた主人公は", GetColor(0, 0, 0));
+        DrawString(140, 340, "急いで家に帰ったのだった...", GetColor(0, 0, 0));
+        DrawString(140, 380, "遊んでくれてありがとう!!", GetColor(0, 0, 0));
+        DrawString(140, 400, "ESCキーを押したらゲームを終了できるよ。", GetColor(0, 0, 0));
     }
   
 
@@ -307,7 +311,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                     }
                     else if (changetexthandle1 == 2) {
                             DrawBox(150, 350, 450, 450, (255, 255, 255), true);
-                            DrawFormatString(170, 355, (0, 0, 0), "何もないようだ", i);
+                            DrawFormatString(170, 355, (0, 0, 0), "何もないようだ。", i);
                         
                     }
                      
@@ -336,7 +340,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                     }
                     else if (changetexthandle2 == 2) {
                         DrawBox(150, 350, 450, 450, (255, 255, 255), true);
-                        DrawFormatString(170, 355, (0, 0, 0), "何もないようだ", i);
+                        DrawFormatString(170, 355, (0, 0, 0), "何もないようだ。", i);
                     }
                 }
             }
@@ -360,7 +364,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             }
                     else if (changetexthandle3 == 2) {
                           DrawBox(150, 350, 450, 450, (255, 255, 255), true);
-                          DrawFormatString(170, 355, (0, 0, 0), "何もないようだ", i);
+                          DrawFormatString(170, 355, (0, 0, 0), "何もないようだ。", i);
                       }
                 }
             }
