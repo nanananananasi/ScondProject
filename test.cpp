@@ -108,23 +108,27 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
         if (Sceen == 0){
             DrawGraph(0, 0, GameStart, true);
-            DrawString(240, 100, "WhiteHouse", GetColor(255, 255, 255));
-            DrawString(140, 170, "操作方法", GetColor(255, 255, 255));
-            DrawString(140, 190, "移動は", GetColor(255, 255, 255));
-            DrawString(140, 210, "Wで前　　　Sで後", GetColor(255, 255, 255));
-            DrawString(140, 230, "Aで左　　　Dで右", GetColor(255, 255, 255));
-            DrawString(140, 250, "Qで問題を見たり、アイテムを取得したり", GetColor(255, 255, 255));
-            DrawString(140, 270, "マップを見ることができます。", GetColor(255, 255, 255));
-            DrawString(140, 290, "ゲームがスタートしたら最初にQで", GetColor(255, 255, 255));
-            DrawString(140, 310, "マップを見ることをおすすめします", GetColor(255, 255, 255));
-            DrawString(140, 330, "鍵が3種類ありすべて集めるとゲームを", GetColor(255, 255, 255));
-            DrawString(140, 350, "ゲームをクリアすることができます", GetColor(255, 255, 255));
-            DrawString(140, 370, "Gキーでゲームスタート", GetColor(255, 255, 255));
+            DrawString(240, 80, "WhiteHouse", GetColor(255, 255, 255));
+            DrawString(140, 120, "ある日主人公は森深くにある館に興味本位で入ってしまう", GetColor(255, 255, 255));
+            DrawString(140, 140, "入ると同時に玄関の鍵がかかってしまい", GetColor(255, 255, 255));
+            DrawString(140, 160, "閉じ込められてしまった", GetColor(255, 255, 255));
+            DrawString(140, 180, "すべてのカギを集めて館から脱出しよう", GetColor(255, 255, 255));
+            DrawString(140, 220, "操作方法", GetColor(255, 255, 255));
+            DrawString(140, 240, "移動は", GetColor(255, 255, 255));
+            DrawString(140, 260, "Wで前　　　Sで後", GetColor(255, 255, 255));
+            DrawString(140, 280, "Aで左　　　Dで右", GetColor(255, 255, 255));
+            DrawString(140, 300, "Qで問題を見たり、アイテムを取得したり", GetColor(255, 255, 255));
+            DrawString(140, 320, "マップを見ることができます。", GetColor(255, 255, 255));
+            DrawString(140, 340, "ゲームがスタートしたら最初にQで", GetColor(255, 255, 255));
+            DrawString(140, 360, "マップを見ることをおすすめします", GetColor(255, 255, 255));
+            DrawString(140, 380, "鍵が3種類ありすべて集めるとゲームを", GetColor(255, 255, 255));
+            DrawString(140, 400, "ゲームをクリアすることができます", GetColor(255, 255, 255));
+            DrawString(140, 420, "Gキーでゲームスタート", GetColor(255, 255, 255));
             if (Key[KEY_INPUT_G] == 1) {//Map2
                 Sceen = 1;
                 }
         }
-        if (ch.x == 576 && ch.y == 224 && Key[KEY_INPUT_RETURN] == 1 && keyhandle1 == true && keyhandle2 == true && keyhandle3 == true) {
+        if (ch.x == 288 && ch.y == 416 && Key[KEY_INPUT_RETURN] == 1 && keyhandle1 == true && keyhandle2 == true && keyhandle3 == true) {
             Sceen = 2;
         }
     if (Sceen == 2) {
@@ -376,6 +380,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             }
             ch.img = image[(ch.x % 32 + ch.y % 32) / 8 + ch.muki * 4];            //画像をセット
    
+
             for (int i = 0; i < 9; i++) {
                 if (i++) {
                     DrawBox(30 + i * 30, 0, 90 + i * 30, 60, GetColor(0, 0, 0), false);
